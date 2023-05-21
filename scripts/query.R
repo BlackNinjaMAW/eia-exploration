@@ -49,16 +49,21 @@ api_call <- function(url, api_key) {
     }
   }
   
+  # Prevents several calls from hitting API limit
+  Sys.sleep(5)
+  
   return(df_data)
 }
 
 api_key <- "cNBvIPbqcC8WgmDrJM5haRO9giKzNOosV1XuZgaG"
 
+emissions_url <- "https://api.eia.gov/v2/co2-emissions/co2-emissions-aggregates/data/?frequency=annual&data[0]=value&sort[0][column]=period&sort[0][direction]=desc"
 
 sector_url <- "https://api.eia.gov/v2/electricity/retail-sales/data/?frequency=monthly&data[0]=customers&data[1]=price&data[2]=revenue&data[3]=sales&sort[0][column]=period&sort[0][direction]=desc"
 
-power_url <- "https://api.eia.gov/v2/electricity/facility-fuel/data/?frequency=monthly&data[0]=average-heat-content&data[1]=consumption-for-eg&data[2]=consumption-for-eg-btu&data[3]=generation&data[4]=gross-generation&data[5]=total-consumption&data[6]=total-consumption-btu&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
+power_url <- "https://api.eia.gov/v2/electricity/facility-fuel/data/?frequency=monthly&data[0]=average-heat-content&data[1]=consumption-for-eg&data[2]=consumption-for-eg-btu&data[3]=generation&data[4]=gross-generation&data[5]=total-consumption&data[6]=total-consumption-btu&sort[0][column]=period&sort[0][direction]=desc"
 
+df_emissions <- api_call(emissions_url, api_key)
 df_sector <- api_call(sector_url, api_key)
 df_power <- api_call(power_url, api_key)
 
