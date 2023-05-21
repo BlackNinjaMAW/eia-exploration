@@ -1,7 +1,8 @@
+library(tidyverse)
 library(jsonlite)
 library(magrittr)
-library(dplyr)
 library(simts)
+library(maps)
 library(httr)
 
 api_call <- function(url, api_key) {
@@ -43,7 +44,7 @@ api_call <- function(url, api_key) {
       }
     } else {
       # End if errant status code received
-      cat(paste(http_status(response)$message, "\nMessage Michael"))
+      cat(paste(http_status(response)$message))
       finished <- TRUE
     }
   }
@@ -51,13 +52,17 @@ api_call <- function(url, api_key) {
   return(df_data)
 }
 
-api_key <- "Your API key here"
-url <- "https://api.eia.gov/v2/electricity/retail-sales/data/?frequency=monthly&data[0]=customers&data[1]=price&data[2]=revenue&data[3]=sales&sort[0][column]=period&sort[0][direction]=desc"
+api_key <- "cNBvIPbqcC8WgmDrJM5haRO9giKzNOosV1XuZgaG"
 
-df_customers <- api_call(url, api_key)
+
+sector_url <- "https://api.eia.gov/v2/electricity/retail-sales/data/?frequency=monthly&data[0]=customers&data[1]=price&data[2]=revenue&data[3]=sales&sort[0][column]=period&sort[0][direction]=desc"
+
+power_url <- "https://api.eia.gov/v2/electricity/facility-fuel/data/?frequency=monthly&data[0]=average-heat-content&data[1]=consumption-for-eg&data[2]=consumption-for-eg-btu&data[3]=generation&data[4]=gross-generation&data[5]=total-consumption&data[6]=total-consumption-btu&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
+
+df_sector <- api_call(sector_url, api_key)
+df_power <- api_call(power_url, api_key)
 
 # Example of a plot using the above dataset
-
 df_prices <- df_customers %>%
   mutate(period = as.Date(period, "%Y-%M")) %>%
   filter(sectorid != "ALL" & sectorid != "OTH") %>%
@@ -83,3 +88,24 @@ plot <- ggplot(df_prices, aes(x = period, y = averagePrice, color = sectorName))
   plot_theme
 
 plot(plot)
+
+df_state <- df_sector %>%
+  mutate(stateDescription = tolower(stateDescription)) %>%
+  filter(sectorName == "all")
+
+ggplot() +
+  geom_map(data = mapUS, map = mapUS, aes(map_id = region), fill = "#00000033", color = "white") +
+  theme(legend.background = element_rect(fill = "black"),
+        legend.key = element_rect(fill = "black"),
+        legend.text = element_text(color = "white"),
+        legend.title = element_text(color = "white"),
+        panel.grid = element_blank(), 
+        panel.border = element_rect(fill = NA), 
+        panel.background = element_rect(fill = "black"), 
+        plot.background = element_rect(fill = "black"))
+
+crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
+
+vars <- lapply(names(crimes)[-1], function(j) {
+  data.frame(state = crimes$state, variable = j, value = crimes[[j]])
+})
