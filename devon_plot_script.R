@@ -79,7 +79,7 @@ df_totalcarbon <- df_emissions %>%
 df_cust_prices <- df_sector %>%
   mutate(period = as.Date(period, "%Y-%M")) %>%
   filter(sectorid != "ALL" & sectorid != "OTH") %>%
-  group_by(period, sectorName, sectorid, `price-units`) %>%
+  group_by(period, sectorName, sectorid, stateid, `price-units`) %>%
   summarise(averagePrice = mean(price))
 
 
