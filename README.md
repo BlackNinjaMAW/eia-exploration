@@ -99,7 +99,7 @@ This reactive function calculates a Geometric Brownian Motion, a stochastic proc
 # Generate correlation matrix plot
 corr_matrix <- reactive({
   # Select the required columns
-  brent_subset <- brent[, c("Open", "High", "Low", "Last", "Change", "Settle", "Volume", "Previous Day Open Interest")]
+  brent_subset <- brent[, c("Settle", "Volume", "Previous Day Open Interest")]
   # Calculate the correlation matrix
   corr <- cor(brent_subset)
   # Return the correlation matrix
