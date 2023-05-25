@@ -76,7 +76,15 @@ df_totalcarbon <- df_emissions %>%
   mutate(interval = signif(period, digits = 3)) %>%
   rename(fuel.name = "fuel-name")
 
-plot_carbon <- ggplot(data = df_totalcarbon, aes(x = period, y = value, fill = fuel.name, alpha = .5)) +
+df_cust_prices <- df_sector %>%
+  mutate(period = as.Date(period, "%Y-%M")) %>%
+  filter(sectorid != "ALL" & sectorid != "OTH") %>%
+  group_by(period, sectorName, sectorid, `price-units`) %>%
+  summarise(averagePrice = mean(price))
+
+
+
+plot_carbon <- ggplot(data = df_totalcarbon, aes(x = period, y = value, fill = fuel.name, alpha = .6)) +
   stat_smooth(geom = "area") +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
   theme(panel.grid = element_line(colour = "gray", linetype = "dashed")) +
@@ -86,3 +94,15 @@ plot_carbon <- ggplot(data = df_totalcarbon, aes(x = period, y = value, fill = f
        y = "Metric Tons of CO2 Emitted (millions)")
 
 plot(plot_carbon)
+
+
+plot_pricing <- ggplot(data = df_cust_prices, aes(x = period, y = averagePrice, fill = sectorName, alpha = .6)) +
+  stat_smooth(geom = "area") +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
+  theme(panel.grid = element_line(colour = "gray", linetype = "dashed")) +
+  labs(title = "Price of Electricity by Sector",
+       subtitle = "Period from 2001-2023",
+       x = "Period",
+       y = "Price (Cents per kW/H)")
+
+plot(plot_pricing)
