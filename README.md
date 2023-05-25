@@ -1,4 +1,4 @@
-Oil Money Master: A guide to quantitative trading methods for Crude Oil options
+Oil Money Master: A Real-Time Quantitative Trading app for Crude Oil options
 =====================================================
 
 This Shiny application analyzes the historical futures prices of Brent Crude Oil using the CHRIS/CME\_BZ1 dataset from Quandl.
