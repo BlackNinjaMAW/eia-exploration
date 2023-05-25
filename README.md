@@ -10,6 +10,88 @@ The Crude Oil Quantitative Trading App provides valuable tools and visualization
 # Geometric Brownian Motion (GBM) Plot: #
 The GBM plot helps investors understand the potential future price movements of crude oil. By adjusting parameters such as the number of periods, initial price, drift, and volatility, investors can simulate different scenarios and assess the potential risk and return associated with their investment strategies.
 
+S 
+t
+​
+ =S 
+0
+​
+ exp((μ− 
+2
+1
+​
+ σ 
+2
+ )t+σW 
+t
+​
+ )
+
+Where:
+
+�
+�
+S 
+t
+​
+  represents the price of the asset at time 
+�
+t.
+�
+0
+S 
+0
+​
+  is the initial price of the asset.
+�
+μ is the drift or expected return of the asset per unit of time.
+�
+σ is the volatility or standard deviation of the asset's returns per unit of time.
+�
+�
+W 
+t
+​
+  is a Wiener process or standard Brownian motion, representing a random variable that follows a normal distribution with mean 0 and standard deviation 1.
+In the formula, the term 
+(
+�
+−
+1
+2
+�
+2
+)
+�
+(μ− 
+2
+1
+​
+ σ 
+2
+ )t accounts for the deterministic trend or drift of the asset's price over time. It represents the expected increase in the asset's price due to factors such as growth or inflation.
+
+The term 
+�
+�
+�
+σW 
+t
+​
+  represents the random component or volatility of the asset's price. It captures the unpredictable fluctuations or shocks in the price that are not explained by the drift. The multiplication of 
+�
+σ (volatility) and 
+�
+�
+W 
+t
+​
+  (Wiener process) ensures that the random component follows a normal distribution with mean 0 and standard deviation 
+�
+σ.
+
+By simulating the GBM formula for different time periods, initial prices, drifts, and volatilities, investors can generate a range of possible future price paths for crude oil or any other asset. This simulation helps assess the risk and return associated with investment strategies and supports decision-making processes.
+
 ![Capture](https://github.com/michael-wherry/eia-exploration/assets/75454891/5d93b96f-ad41-4e4d-9082-9b388a3f4407)
 
 # Correlation Matrix: #
