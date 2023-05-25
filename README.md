@@ -1,7 +1,30 @@
-Oil Money Master: A Real-Time Quantitative Trading app for Crude Oil options
+Oil Money Master: A Real-Time Quantitative Trading app for Crude Oil options 🛢️ 📈
 =====================================================
 
-This Shiny application analyzes the historical futures prices of Brent Crude Oil using the CHRIS/CME\_BZ1 dataset from Quandl.
+This repository contains a Shiny application designed for quantitative trading analysis of crude oil options. The application leverages historical data of Brent Crude Oil Financial Futures to provide users with various interactive plots and tools for analyzing price trends, volatility, and correlations.
+
+
+The Crude Oil Quantitative Trading App provides valuable tools and visualizations that can assist investors in analyzing and making informed decisions regarding crude oil options. Here's how an investor can leverage the app:
+
+# Geometric Brownian Motion (GBM) Plot: #
+The GBM plot helps investors understand the potential future price movements of crude oil. By adjusting parameters such as the number of periods, initial price, drift, and volatility, investors can simulate different scenarios and assess the potential risk and return associated with their investment strategies.
+
+# Correlation Matrix: #
+The correlation matrix allows investors to evaluate the relationships between different attributes of the Brent Crude Oil dataset, including settle price, volume, and previous day open interest. By identifying correlations, investors can gain insights into how these attributes interact and potentially discover patterns or dependencies that can inform their trading strategies.
+
+# Scatter Plot (3D): #
+The 3D scatter plot visualizes the relationship between date, settle price, and volume. Investors can identify trends, patterns, and potential outliers in the data, which can help in assessing market behavior and making trading decisions. For example, observing higher volumes accompanied by significant price movements may indicate increased market activity and potential trading opportunities.
+
+# Box Plot (Interactive):#
+The interactive box plot enables investors to examine the distribution of settle prices across different years. By analyzing the central tendencies, outliers, and ranges within each year, investors can gain insights into the market's price dynamics. This information can help investors understand the historical behavior of crude oil prices and potentially identify trading opportunities based on price patterns and outliers.
+
+# Time Series Analysis: #
+The time series analysis plot provides investors with a visual representation of the historical trend of settle prices across different years. By analyzing price movements over time, investors can identify long-term trends, seasonality, and potential cyclical patterns. This analysis can help investors in assessing market conditions and making informed decisions based on historical price behavior.
+
+# Price Prediction: #
+The price prediction feature utilizes the GBM parameters specified by the investor to forecast future prices of crude oil. By simulating different scenarios and generating predicted prices, investors can assess potential outcomes and gauge the risk and return associated with different investment strategies. This information can be valuable in formulating trading strategies and managing portfolio risk.
+
+By utilizing these features and analyzing the visualizations provided by the Crude Oil Quantitative Trading App, investors can gain insights into the crude oil market and make more informed decisions when trading crude oil options. The app empowers investors to evaluate different scenarios, assess risk and return, identify patterns and correlations, and make predictions based on historical data and quantitative models.
 
 Dependencies
 ------------
