@@ -82,8 +82,6 @@ df_cust_prices <- df_sector %>%
   group_by(period, sectorName, sectorid, stateid, `price-units`) %>%
   summarise(averagePrice = mean(price))
 
-
-
 plot_carbon <- ggplot(data = df_totalcarbon, aes(x = period, y = value, fill = fuel.name, alpha = .6)) +
   stat_smooth(geom = "area") +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
@@ -94,7 +92,6 @@ plot_carbon <- ggplot(data = df_totalcarbon, aes(x = period, y = value, fill = f
        y = "Metric Tons of CO2 Emitted (millions)")
 
 plot(plot_carbon)
-
 
 plot_pricing <- ggplot(data = df_cust_prices, aes(x = period, y = averagePrice, fill = sectorName, alpha = .6)) +
   stat_smooth(geom = "area") +
