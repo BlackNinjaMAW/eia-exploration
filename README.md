@@ -1,4 +1,5 @@
 Oil Money Master: A Real-Time Quantitative Trading app for Crude Oil options 🛢️ 📈
+(Adam Mouktadi & Shaheer)
 =====================================================
 
 This repository contains a Shiny application designed for quantitative trading analysis of crude oil options. The application leverages historical data of Brent Crude Oil Financial Futures to provide users with various interactive plots and tools for analyzing price trends, volatility, and correlations.
