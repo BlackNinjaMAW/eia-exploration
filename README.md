@@ -1,5 +1,4 @@
-﻿
-README for Brent Crude Oil Financial Futures Analysis
+Brent Crude Oil Financial Futures Analysis
 =====================================================
 
 This Shiny application analyzes the historical futures prices of Brent Crude Oil using the CHRIS/CME\_BZ1 dataset from Quandl.
@@ -129,3 +128,4 @@ output$price_prediction_plot <- renderPlotly({
 ```
 
 This part of the script uses the modeled Geometric Brownian Motion to predict future prices. The predicted prices are then visualized as a bar graph in the Price Prediction tab.
+
