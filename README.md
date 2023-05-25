@@ -1,4 +1,4 @@
-Brent Crude Oil Financial Futures Analysis
+Oil Money Master: A guide to quantitative trading methods for Crude Oil options
 =====================================================
 
 This Shiny application analyzes the historical futures prices of Brent Crude Oil using the CHRIS/CME\_BZ1 dataset from Quandl.
