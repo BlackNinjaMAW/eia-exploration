@@ -1,4 +1,4 @@
-#Oil Money Master: A Real-Time Quantitative Trading app for Crude Oil options 🛢️ 📈#
+# Oil Money Master: A Real-Time Quantitative Trading app for Crude Oil options 🛢️ 📈 #
 
 =====================================================
 
